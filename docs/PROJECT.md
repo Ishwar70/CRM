@@ -36,14 +36,14 @@ Billing, subscriptions, email campaigns, chat, multi-tenant orgs, file uploads, 
 
 ## Definition of done
 
-- [ ] Admin and Sales can sign in and sign out.
-- [ ] Backend authorization is enforced and tested (not only hidden UI).
-- [ ] Lead CRUD persists in MongoDB.
-- [ ] Search, filters, sorting, and pagination work together.
-- [ ] Validation and error responses are consistent.
-- [ ] UI has loading, empty, error, and success states.
-- [ ] Mobile layout is usable (320 px).
-- [ ] High-value tests pass.
-- [ ] No secrets or real personal data committed.
+- [x] Admin and Sales can sign in and sign out.
+- [x] Backend authorization is enforced and tested (not only hidden UI).
+- [x] Lead CRUD persists in MongoDB.
+- [x] Search, filters, sorting, and pagination work together.
+- [x] Validation and error responses are consistent.
+- [x] UI has loading, empty, error, and success states.
+- [x] Mobile layout is usable (320 px).
+- [x] High-value tests pass.
+- [x] No secrets or real personal data committed.
 - [ ] Public demo deployed (requires the owner's hosting accounts; see README).
-- [ ] Portfolio screenshots captured.
+- [x] Portfolio screenshots captured.

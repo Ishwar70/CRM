@@ -1,0 +1,12 @@
+{
+  "name": "crm-e2e-smoke",
+  "private": true,
+  "type": "module",
+  "description": "Browser acceptance checks and portfolio screenshots for the CRM dashboard",
+  "scripts": {
+    "smoke": "node smoke.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.56.0"
+  }
+}

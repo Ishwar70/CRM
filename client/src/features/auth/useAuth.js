@@ -1,6 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { authApi } from '../../api/endpoints.js';
 
+function removeNonSessionQueries(queryClient) {
+  queryClient.removeQueries({ predicate: (query) => query.queryKey[0] !== 'me' });
+}
+
 export function useCurrentUser() {
   return useQuery({
     queryKey: ['me'],
@@ -23,8 +27,8 @@ export function useLogin() {
   return useMutation({
     mutationFn: authApi.login,
     onSuccess: ({ user }) => {
-      queryClient.clear();
       queryClient.setQueryData(['me'], user);
+      removeNonSessionQueries(queryClient);
     },
   });
 }
@@ -34,8 +38,9 @@ export function useLogout() {
   return useMutation({
     mutationFn: authApi.logout,
     onSettled: () => {
-      queryClient.clear();
+      // Flip the session first so route guards unmount protected pages before their data disappears.
       queryClient.setQueryData(['me'], null);
+      removeNonSessionQueries(queryClient);
     },
   });
 }

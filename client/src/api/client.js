@@ -38,6 +38,10 @@ export async function request(path, { method = 'GET', body, params } = {}) {
     payload = null;
   }
 
+  if (!payload && res.status >= 500) {
+    throw new ApiRequestError(res.status, 'The server is unavailable right now. Please try again shortly.');
+  }
+
   if (!res.ok || payload?.success === false) {
     throw new ApiRequestError(
       res.status,

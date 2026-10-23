@@ -122,14 +122,14 @@ function RecentLeads({ leads }) {
               {leads.map((lead) => (
                 <tr key={lead._id} className="hover:bg-slate-50">
                   <td className="px-5 py-3">
-                    <Link to={`/leads/${lead._id}`} className="font-medium text-slate-900 hover:text-indigo-600">
+                    <Link to={`/leads/${lead._id}`} className="whitespace-nowrap font-medium text-slate-900 hover:text-indigo-600">
                       {lead.name}
                     </Link>
                   </td>
                   <td className="hidden px-5 py-3 text-slate-600 sm:table-cell">{lead.company || '—'}</td>
                   <td className="px-5 py-3"><StatusBadge status={lead.status} /></td>
                   <td className="hidden px-5 py-3 md:table-cell"><PriorityBadge priority={lead.priority} /></td>
-                  <td className="hidden px-5 py-3 text-slate-600 lg:table-cell">{lead.assignedTo?.name ?? '—'}</td>
+                  <td className="hidden whitespace-nowrap px-5 py-3 text-slate-600 lg:table-cell">{lead.assignedTo?.name ?? '—'}</td>
                   <td className="hidden whitespace-nowrap px-5 py-3 text-slate-500 sm:table-cell">{formatDate(lead.createdAt)}</td>
                 </tr>
               ))}
