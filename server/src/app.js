@@ -6,6 +6,8 @@ import { dbState } from './config/db.js';
 import { errorHandler, notFound } from './middleware/error.js';
 import { sendSuccess } from './utils/http.js';
 import { authRoutes } from './routes/authRoutes.js';
+import { leadRoutes } from './routes/leadRoutes.js';
+import { userRoutes } from './routes/userRoutes.js';
 
 export function createApp(env) {
   const app = express();
@@ -30,6 +32,8 @@ export function createApp(env) {
     sendSuccess(res, { data: { status: 'ok', db: dbState(), uptime: Math.round(process.uptime()) } }),
   );
   app.use('/api/auth', authRoutes(env));
+  app.use('/api/leads', leadRoutes(env));
+  app.use('/api/users', userRoutes(env));
 
   app.use(notFound);
   app.use(errorHandler);

@@ -47,11 +47,11 @@ Login failures always return `401 "Invalid email or password"` — the same mess
 | Param | Rules |
 | ----- | ----- |
 | search | string ≤ 100, escaped regex on name/email/company |
-| status, priority | enum values |
+| status, priority, source | enum values |
 | assignedTo | ObjectId; ignored for Sales (always self) |
 | page | int ≥ 1, default 1 |
 | limit | int 1–100, default 10 |
-| sort | one of `createdAt, name, company, status, priority, estimatedValue`, optional `-` prefix; default `-createdAt` |
+| sort | one of `createdAt, updatedAt, name, company, status, priority, estimatedValue`, optional `-` prefix; default `-createdAt` |
 
 Unknown query keys are rejected (400) so operators such as `status[$ne]=x` cannot reach Mongo.
 
