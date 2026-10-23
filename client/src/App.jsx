@@ -1,23 +1,17 @@
-import { useEffect, useState } from 'react';
-import { request } from './api/client.js';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter } from 'react-router-dom';
+import { queryClient } from './api/queryClient.js';
+import { ToastProvider } from './components/ui/Toast.jsx';
+import { AppRoutes } from './routes/AppRoutes.jsx';
 
 export default function App() {
-  const [health, setHealth] = useState({ state: 'loading' });
-
-  useEffect(() => {
-    request('/health')
-      .then((data) => setHealth({ state: 'ok', data }))
-      .catch((err) => setHealth({ state: 'error', message: err.message }));
-  }, []);
-
   return (
-    <main className="mx-auto max-w-lg p-8">
-      <h1 className="text-2xl font-semibold">Pipeline CRM</h1>
-      <p className="mt-2 text-slate-600" role="status">
-        {health.state === 'loading' && 'Checking API…'}
-        {health.state === 'ok' && `API ${health.data.status}, database ${health.data.db}`}
-        {health.state === 'error' && `API unavailable: ${health.message}`}
-      </p>
-    </main>
+    <QueryClientProvider client={queryClient}>
+      <ToastProvider>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </ToastProvider>
+    </QueryClientProvider>
   );
 }

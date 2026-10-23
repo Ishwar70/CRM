@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import { dbState } from './config/db.js';
 import { errorHandler, notFound } from './middleware/error.js';
 import { sendSuccess } from './utils/http.js';
+import { authRoutes } from './routes/authRoutes.js';
 
 export function createApp(env) {
   const app = express();
@@ -28,6 +29,7 @@ export function createApp(env) {
   app.get('/api/health', (req, res) =>
     sendSuccess(res, { data: { status: 'ok', db: dbState(), uptime: Math.round(process.uptime()) } }),
   );
+  app.use('/api/auth', authRoutes(env));
 
   app.use(notFound);
   app.use(errorHandler);
