@@ -1,0 +1,40 @@
+{
+  "name": "crm-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CRM Admin Dashboard REST API (Express + Mongoose)",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon --watch src src/server.js",
+    "dev:memory": "node scripts/dev-memory.js",
+    "seed": "node scripts/seed.js",
+    "test": "vitest run",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^4.22.3",
+    "express-rate-limit": "^8.7.1",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.24.6",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "globals": "^17.13.0",
+    "mongodb-memory-server": "^11.3.0",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.3.1",
+    "vitest": "^5.0.5"
+  }
+}
