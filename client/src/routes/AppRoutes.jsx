@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { ProtectedRoute, PublicOnlyRoute } from './guards.jsx';
+import { ProtectedRoute, PublicOnlyRoute, RequireRole } from './guards.jsx';
 import { AppLayout } from '../layouts/AppLayout.jsx';
 import LoginPage from '../pages/LoginPage.jsx';
 import DashboardPage from '../pages/DashboardPage.jsx';
@@ -7,6 +7,8 @@ import NotFoundPage from '../pages/NotFoundPage.jsx';
 import LeadsPage from '../pages/LeadsPage.jsx';
 import LeadNewPage from '../pages/LeadNewPage.jsx';
 import LeadDetailPage from '../pages/LeadDetailPage.jsx';
+import UsersPage from '../pages/UsersPage.jsx';
+import ProfilePage from '../pages/ProfilePage.jsx';
 
 export function AppRoutes() {
   return (
@@ -21,6 +23,10 @@ export function AppRoutes() {
           <Route path="/leads" element={<LeadsPage />} />
           <Route path="/leads/new" element={<LeadNewPage />} />
           <Route path="/leads/:id" element={<LeadDetailPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route element={<RequireRole role="admin" />}>
+            <Route path="/users" element={<UsersPage />} />
+          </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Route>

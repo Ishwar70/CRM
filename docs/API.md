@@ -66,5 +66,12 @@ Response `data`:
 ## Dashboard stats
 
 ```json
-{ "totals": { "total": 32, "new": 7, "contacted": 6, "qualified": 8, "won": 6, "lost": 5 }, "pipelineValue": 412000, "recentLeads": [Lead x5] }
+{ "totals": { "total": 32, "new": 7, "contacted": 6, "qualified": 8, "won": 6, "lost": 5 }, "pipelineValue": 412000, "wonValue": 153000, "recentLeads": [Lead x5] }
 ```
+
+`pipelineValue` sums `estimatedValue` for open statuses (new, contacted, qualified); `wonValue` sums won leads. Sales users only see their own leads in every number.
+
+## Users
+
+`GET /api/users` returns `{ users: [User & { leadCount }] }`. `POST /api/users` validates name (2–100), email, password (8–128), role; duplicate email → 409.
+

@@ -8,6 +8,7 @@ import { sendSuccess } from './utils/http.js';
 import { authRoutes } from './routes/authRoutes.js';
 import { leadRoutes } from './routes/leadRoutes.js';
 import { userRoutes } from './routes/userRoutes.js';
+import { dashboardRoutes } from './routes/dashboardRoutes.js';
 
 export function createApp(env) {
   const app = express();
@@ -34,6 +35,7 @@ export function createApp(env) {
   app.use('/api/auth', authRoutes(env));
   app.use('/api/leads', leadRoutes(env));
   app.use('/api/users', userRoutes(env));
+  app.use('/api/dashboard', dashboardRoutes(env));
 
   app.use(notFound);
   app.use(errorHandler);
